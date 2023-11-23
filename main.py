@@ -44,17 +44,17 @@ headers = {
 # https://pixe.la/v1/users/maheshc/graphs/graph1.html
 
 # Step 4. post value to the graph
-# pixel_creation_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}"
-#
-# today = datetime.now()
-#
-# pixel_data = {
-#     "date": today.strftime("%Y%m%d"),
-#     "quantity": "150.0",
-# }
-#
-# response = requests.post(url=pixel_creation_endpoint, json=pixel_data, headers=headers)
-# print(response.text)
+pixel_creation_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}"
+
+today = datetime.now()
+
+pixel_data = {
+    "date": today.strftime("%Y%m%d"),
+    "quantity": input("How many minutes did you code today?:"),
+}
+
+response = requests.post(url=pixel_creation_endpoint, json=pixel_data, headers=headers)
+print(response.text)
 
 # Step 5. update value on the graph PUT - /v1/users/<username>/graphs/<graphID>/<yyyyMMdd>
 # today = datetime.now()
@@ -69,9 +69,9 @@ headers = {
 # print(response.text)
 
 # Step 6. delete value in the graph
-today = datetime.now()
-
-delete_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
-
-response = requests.delete(url=delete_endpoint, headers=headers)
-print(response.text)
+# today = datetime.now()
+#
+# delete_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
+#
+# response = requests.delete(url=delete_endpoint, headers=headers)
+# print(response.text)

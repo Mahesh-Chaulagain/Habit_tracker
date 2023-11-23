@@ -5,9 +5,9 @@ from datetime import datetime
 
 load_dotenv()
 
-USERNAME = os.getenv("USERNAME")
+USERNAME = "maheshc"
 TOKEN = os.getenv("TOKEN")
-GRAPH_ID = os.getenv("GRAPH_ID")
+GRAPH_ID = "graph1"
 
 pixela_endpoint = "https://pixe.la/v1/users"
 
@@ -24,7 +24,7 @@ user_params = {
 
 # Step 2. create a new graph in pixela
 graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
-#
+
 # graph_params = {
 #     "id": "GRAPH_ID",
 #     "name": "Coding Graph",
@@ -32,11 +32,11 @@ graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
 #     "type": "float",
 #     "color": "shibafu",
 # }
-#
+
 headers = {
     "X-USER-TOKEN": TOKEN,
 }
-#
+
 # response = requests.post(url=graph_endpoint, json=graph_params, headers=headers)
 # print(response.text)
 
@@ -46,9 +46,11 @@ headers = {
 # Step 4. post value to the graph
 pixel_creation_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}"
 
+today = datetime.now()
+
 pixel_data = {
-    "date": "20231123",
-    "quantity": "90.0",
+    "date": today.strftime("%Y%m%d"),
+    "quantity": "150.0",
 }
 
 response = requests.post(url=pixel_creation_endpoint, json=pixel_data, headers=headers)
